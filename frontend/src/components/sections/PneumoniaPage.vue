@@ -77,6 +77,7 @@ export default {
     mounted() {
         // window.addEventListener('pause', this.diagnose())
         //this.initmodels()
+        console.debug('ENV: ' + process.env.VUE_APP_MY_NAME)
     },
     data() {
         return {
@@ -85,12 +86,13 @@ export default {
             model: {},
             result: '',
             dialog: false,
-            img_url: ''
+            img_url: '',
+            app_name: process.env.VUE_APP_MY_NAME,
         }
     },
     methods: {
         async initModel (snapshot) {
-            const url = 'http://localhost:9000/model/model.json'
+            const url = location.href + 'model/model.json'
             console.log('Loading model for inference')
             const model = await tf.loadLayersModel(url)
             console.log("Model loaded")
