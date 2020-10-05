@@ -50,7 +50,7 @@
             cols="4">
             <input type="file"
             accept="image/*" ref="img_inf"
-            @:change="imgChange"
+            @change="imgChange"
             style="display: none" />
             <v-btn
             text
@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         async initModel (snapshot) {
-            const url = location.href + 'model/model.json'
+            const url = location.protocol + '//' +location.host + '/model/model.json'
             console.log('Loading model for inference')
             const model = await tf.loadLayersModel(url)
             console.log("Model loaded")
@@ -159,13 +159,17 @@ export default {
         },
         imgChange (e) {
             const files = e.target.files[0] || e.dataTransfer.files[0]
-            if (!files.length) {
+            if (!files.name == 'undefined') {
                 this.dialog = true
                 this.result = 'No files selected'
             }
             else {
                 this.dialog = true
-                this.result = 'Hello World'
+                this.result = 'Processing Image'
+                const imgUrl = this.$refs.img_inf.files[0]
+                let imgFile = new Image
+                imgFile.src = URL.createObjectURL(imgUrl)
+                this.process_image(imgFile)
             }
         },
         process_image (img) {
@@ -198,7 +202,7 @@ export default {
             let img_el = document.createElement('img')
             img_el.setAttribute('src', img_data)
             canvas.appendChild(img_el)
-
+            this.dialog = false
             this.initModel(img_el)
         }
     }
