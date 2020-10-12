@@ -75,3 +75,9 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+.v-container__content {
+  background-color: #0f0f0f;
+}
+</style>

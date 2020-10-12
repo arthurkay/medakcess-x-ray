@@ -20,16 +20,26 @@
         <v-row>
         <Services />
         </v-row>
+        <v-row>
+            <About />
+        </v-row>
+        <v-footer>
+            <Footer />
+        </v-footer>
     </v-container>
 </template>
 
 <script>
 import Services from './sections/Services'
+import About from './sections/About'
+import Footer from './sections/Footer'
 
 export default {
     name: 'HomePage',
     components: {
-        Services
+        Services,
+        About,
+        Footer
     },
     data: () => ({
         slider: [
