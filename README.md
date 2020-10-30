@@ -1,10 +1,24 @@
-# MedAkcess
+# Medakcess
 
-To run this project make sure you have installed go and its in your GOPATH,
-the run:
-
-```bash
-go run main.go backend/main.go
+## Project setup
+```
+npm install
 ```
 
-to run the backend service that serves and hosts the AI models for the service
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
